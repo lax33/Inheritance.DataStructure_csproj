@@ -12,5 +12,10 @@ namespace Inheritance.DataStructure
         {
 
         }
+        public int CompareTo(Category a )
+        {
+            return  a;
+        }
+
     }
 }
