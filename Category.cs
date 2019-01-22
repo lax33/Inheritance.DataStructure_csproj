@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Inheritance.DataStructure
 {
-    public class Category
+    public class Category: IComparable
     {
         public Category(string a, MessageType messageType, MessageTopic messageTopic)
         {
