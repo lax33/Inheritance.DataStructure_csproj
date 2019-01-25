@@ -30,74 +30,28 @@ namespace Inheritance.DataStructure
             {
                 if (typ.Equals(o.typ))
                 {
-                    if (messagetopic == o.messagetopic)
-                    {
-                        if (messagetype == o.messagetype)
-                        {
-                            return 0;
-                        }
-                    }
-                    else if (messagetopic == o.messagetopic)
-                    {
-                        if (messagetype > o.messagetype)
-                        {
-                            return 1;
-                        }
-                    }
-                    if (messagetopic < o.messagetopic)
-                    {
-                        if (messagetype < o.messagetype)
-                        {
-                            return -1;
-                        }
-                    }
-                    else if (messagetopic < o.messagetopic)
-                    {
-                        if (messagetype == o.messagetype)
-                        {
-                            return -1;
-                        }
-                    }
-                    else if (messagetopic < o.messagetopic)
-                    {
-                        if (messagetype > o.messagetype)
-                        {
-                            return 1;
-                        }
-                    }
-                    else if (messagetopic == o.messagetopic)
-                    {
-                        if (messagetype < o.messagetype)
-                        {
-                            return 1;
-                        }
-                    }          
+                    if (messagetopic == o.messagetopic && messagetype == o.messagetype) return 0;
+
+                    if (messagetopic == o.messagetopic && messagetype > o.messagetype) return 1;
                     
-                    else if (messagetopic > o.messagetopic)
-                    {
-                        if (messagetype < o.messagetype)
-                        {
-                            return -1;
-                        }
-                    }
-                    else if (messagetopic > o.messagetopic)
-                    {
-                        if (messagetype == o.messagetype)
-                        {
-                            return -1;
-                        }
-                    }
-                    if (messagetopic > o.messagetopic)
-                    {
-                        if (messagetype > o.messagetype)
-                        {
-                            return 1;
-                        }
-                    }
+                    if (messagetopic < o.messagetopic && messagetype < o.messagetype) return -1;
+                    
+                    if (messagetopic < o.messagetopic && messagetype == o.messagetype) return -1;
+                    
+                    if (messagetopic < o.messagetopic && messagetype > o.messagetype) return 1;
+                    
+                    if (messagetopic == o.messagetopic && messagetype < o.messagetype) return -1;                    
+                    
+                    if (messagetopic > o.messagetopic && messagetype < o.messagetype) return -1;
+                   
+                    if (messagetopic > o.messagetopic && messagetype == o.messagetype) return 1;
+                   
+                    if (messagetopic > o.messagetopic && messagetype > o.messagetype) return 1;
+                    
                 }
-                else return -1;
+                else return 1;
             }
-            return -1;
+            return 1;
         }
         public static bool operator <=(Category obj1, Category obj2)
         {
