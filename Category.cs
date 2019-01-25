@@ -9,30 +9,101 @@ namespace Inheritance.DataStructure
     public class Category: IComparable
     {
         string typ;
-        int incoming;
-        int outgoing;
-        int service;
+        //MessageType
+        int messagetype;
+       
+        //MessageTopic
+        int messagetopic;
+        
         public Category(string a, MessageType messageType, MessageTopic messageTopic)
         {
             typ = a;
-            incoming =(int)messageTopic;
-            outgoing = (int)messageTopic;
+            messagetype = (int)messageType;
+            messagetopic = (int)messageTopic;
 
         }        
 
         public int CompareTo(object obj)
         {
             var o =(Category)obj;
-           return o.typ.CompareTo(typ);
-               // if(incoming.CompareTo(o.incoming)==1)
-                    // if(service.CompareTo(o.outgoing)==1) return 1;
-            throw new NotImplementedException();
+            if (o != null)
+            {
+                if (typ.Equals(o.typ))
+                {
+                    if (messagetopic == o.messagetopic)
+                    {
+                        if (messagetype == o.messagetype)
+                        {
+                            return 0;
+                        }
+                    }
+                    else if (messagetopic == o.messagetopic)
+                    {
+                        if (messagetype > o.messagetype)
+                        {
+                            return 1;
+                        }
+                    }
+                    if (messagetopic < o.messagetopic)
+                    {
+                        if (messagetype < o.messagetype)
+                        {
+                            return -1;
+                        }
+                    }
+                    else if (messagetopic < o.messagetopic)
+                    {
+                        if (messagetype == o.messagetype)
+                        {
+                            return -1;
+                        }
+                    }
+                    else if (messagetopic < o.messagetopic)
+                    {
+                        if (messagetype > o.messagetype)
+                        {
+                            return 1;
+                        }
+                    }
+                    else if (messagetopic == o.messagetopic)
+                    {
+                        if (messagetype < o.messagetype)
+                        {
+                            return 1;
+                        }
+                    }          
+                    
+                    else if (messagetopic > o.messagetopic)
+                    {
+                        if (messagetype < o.messagetype)
+                        {
+                            return -1;
+                        }
+                    }
+                    else if (messagetopic > o.messagetopic)
+                    {
+                        if (messagetype == o.messagetype)
+                        {
+                            return -1;
+                        }
+                    }
+                    if (messagetopic > o.messagetopic)
+                    {
+                        if (messagetype > o.messagetype)
+                        {
+                            return 1;
+                        }
+                    }
+                }
+                else return -1;
+            }
+            return -1;
         }
         public static bool operator <=(Category obj1, Category obj2)
         {
             if (obj1.typ.Equals(obj2.typ))
-                if (obj1.incoming.Equals(obj2.incoming))
-                    if (obj1.outgoing.Equals(obj2.outgoing)) return true;
+                if (obj1.typ.Equals(obj2.typ))
+                    if (obj1.messagetype.Equals(obj2.messagetype)) return true;
             return false;
         }
         public static bool operator >=(Category obj1, Category obj2)
