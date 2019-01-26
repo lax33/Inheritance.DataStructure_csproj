@@ -67,9 +67,12 @@ namespace Inheritance.DataStructure
         }
         public static bool operator <=(Category obj1, Category obj2)
         {
-            if (obj1.typ.Equals(obj2.typ))
-                if (obj1.typ.Equals(obj2.typ))
-                    if (obj1.messagetype.Equals(obj2.messagetype)) return true;
+            if (obj1.typ == "A" && obj2.typ == "A" && obj1.messagetopic == obj2.messagetopic &&
+                obj1.messagetype == obj2.messagetype) return true;
+            if (obj1.typ == "A" && obj2.typ == "A" && obj1.messagetopic < obj2.messagetopic &&
+                obj1.messagetype < obj2.messagetype) return true;
+            if (obj1.typ == "A" && obj2.typ == "B") return true;
+            if (obj1.typ == "B" && obj2.typ == "A") return false;
             return false;
         }
         public static bool operator >=(Category obj1, Category obj2)
@@ -78,11 +81,23 @@ namespace Inheritance.DataStructure
         }
         public static bool operator >(Category obj1, Category obj2)
         {
-            return true;
+            if (obj1.typ == "A" && obj2.typ == "A" && obj1.messagetopic > obj2.messagetopic &&
+                obj1.messagetype > obj2.messagetype) return true;
+            if (obj1.typ == "A" && obj2.typ =="A" && obj1.messagetopic > obj2.messagetopic &&
+                obj1.messagetype > obj2.messagetype) return true;
+            if (obj1.typ == "A" && obj2.typ == "B") return false;
+            
+            return false; 
         }
         public static bool operator <(Category obj1, Category obj2)
         {
-            return true;
+            if (obj1.typ == "A" && obj2.typ == "A" && obj1.messagetopic < obj2.messagetopic &&
+                obj1.messagetype < obj2.messagetype) return true;
+            if (obj1.typ == "A" && obj2.typ =="A" && obj1.messagetopic < obj2.messagetopic &&
+                obj1.messagetype < obj2.messagetype) return true;
+            if (obj1.typ == "A" && obj2.typ == "B") return true;
+            
+            return false; 
         }
     }
 }
