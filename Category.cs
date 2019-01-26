@@ -28,30 +28,35 @@ namespace Inheritance.DataStructure
             var o =(Category)obj;
             if (o != null)
             {
-                if (typ.Equals(o.typ))
+                if (typ == "A" && o.typ == "A")
                 {
                     if (messagetopic == o.messagetopic && messagetype == o.messagetype) return 0;
 
                     if (messagetopic == o.messagetopic && messagetype > o.messagetype) return 1;
-                    
+
                     if (messagetopic < o.messagetopic && messagetype < o.messagetype) return -1;
-                    
+
                     if (messagetopic < o.messagetopic && messagetype == o.messagetype) return -1;
-                    
+
                     if (messagetopic < o.messagetopic && messagetype > o.messagetype) return 1;
-                    
-                    if (messagetopic == o.messagetopic && messagetype < o.messagetype) return -1;                    
-                    
+
+                    if (messagetopic == o.messagetopic && messagetype < o.messagetype) return -1;
+
                     if (messagetopic > o.messagetopic && messagetype < o.messagetype) return -1;
-                   
+
                     if (messagetopic > o.messagetopic && messagetype == o.messagetype) return 1;
-                   
+
                     if (messagetopic > o.messagetopic && messagetype > o.messagetype) return 1;
-                    
+
                 }
-                else return 1;
+                else
+                {
+                    if (typ == "A" && o.typ == "B") return -1;
+                    if (typ == "B" && o.typ == "A") return 1;
+                    if (typ == "B" && o.typ == "B") return 0;
+                }   
             }
-            return 1;
+            return -1;
         }
         public static bool operator <=(Category obj1, Category obj2)
         {
