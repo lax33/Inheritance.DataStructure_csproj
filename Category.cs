@@ -18,8 +18,8 @@ namespace Inheritance.DataStructure
         public Category(string a, MessageType messageType, MessageTopic messageTopic)
         {
             typ = a;
-            messagetype = (int)messageType;
-            messagetopic = (int)messageTopic;
+            messagetype =(int) messageType;
+            messagetopic =(int) messageTopic;
 
         }        
 
@@ -57,6 +57,13 @@ namespace Inheritance.DataStructure
                 }   
             }
             return -1;
+        }
+
+        public override bool Equals(object obj)
+        {
+            Category p = (Category)obj;
+            if (typ == p.typ && messagetype == p.messagetype && messagetopic == p.messagetopic) return true;
+            return false;            
         }
         public static bool operator <=(Category obj1, Category obj2)
         {
