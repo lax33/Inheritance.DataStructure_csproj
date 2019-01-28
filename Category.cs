@@ -62,20 +62,24 @@ namespace Inheritance.DataStructure
 
         public override bool Equals(object obj)
         {
+            if (obj == null) return false;
             Category p = (Category)obj;
             if (typ == p.typ && messagetype == p.messagetype && messagetopic == p.messagetopic) return true;
             return false;            
         }
 
+        public override int GetHashCode()
+        {
+            int t;
+            if (typ == "A") t = 1;
+            t = 2;
+            return t + messagetopic + messagetype;
+        }
+
         public override string ToString()            
         {
             return $"{typ}.{messageType}.{messageTopic}" ;
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        }       
 
         public static bool operator <=(Category obj1, Category obj2)
         {
