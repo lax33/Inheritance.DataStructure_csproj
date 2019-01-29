@@ -46,7 +46,7 @@ namespace Inheritance.DataStructure
 
                     if (messagetopic > o.messagetopic && messagetype < o.messagetype) return -1;
 
-                    if (messagetopic > o.messagetopic && messagetype == o.messagetype) return 1;                                      
+                    if (messagetopic > o.messagetopic && messagetype == o.messagetype) return 1;
                 }
                 else
                 {
@@ -54,6 +54,7 @@ namespace Inheritance.DataStructure
                     if (typ == "B" && o.typ == "A") return 1;
                     if (typ == "B" && o.typ == "B") return 0;
                 }
+            }
             return -1;
         }
 
