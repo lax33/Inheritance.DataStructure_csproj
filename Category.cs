@@ -26,10 +26,11 @@ namespace Inheritance.DataStructure
 
         public int CompareTo(object obj)
         {
-            if (obj == null) return -1; 
+            if (obj == null) return -1;
             var o =obj as Category;
-                      
-            if (typ == "A" && o.typ == "A")
+            if (o == null) return -1;
+            {
+                if (typ == "A" && o.typ == "A")
                 {
                     if (messagetopic == o.messagetopic && messagetype == o.messagetype) return 0;
 
@@ -60,6 +61,7 @@ namespace Inheritance.DataStructure
         {
             if (obj == null) return false;
             Category p = obj as Category;
+            if (p == null) return false;
             if (typ == p.typ && messagetype == p.messagetype && messagetopic == p.messagetopic) return true;
             return false;            
         }
