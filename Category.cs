@@ -8,12 +8,12 @@ namespace Inheritance.DataStructure
 {
     public class Category: IComparable
     {
-        string typ;
+        readonly string typ;
         //MessageType
-        int messagetype;
+        readonly int messagetype;
         readonly MessageType messageType;
         //MessageTopic
-        int messagetopic;
+        readonly int messagetopic;
         readonly MessageTopic messageTopic;
         public Category(string a, MessageType messageType, MessageTopic messageTopic)
         {
@@ -26,11 +26,10 @@ namespace Inheritance.DataStructure
 
         public int CompareTo(object obj)
         {
-            if (obj == null) return -1;
+            if (obj == null) return -1; 
             var o =obj as Category;
-            if (o == null) return -1;
-            {
-                if (typ == "A" && o.typ == "A")
+                      
+            if (typ == "A" && o.typ == "A")
                 {
                     if (messagetopic == o.messagetopic && messagetype == o.messagetype) return 0;
 
@@ -46,18 +45,14 @@ namespace Inheritance.DataStructure
 
                     if (messagetopic > o.messagetopic && messagetype < o.messagetype) return -1;
 
-                    if (messagetopic > o.messagetopic && messagetype == o.messagetype) return 1;
-
-                   // if (messagetopic > o.messagetopic && messagetype > o.messagetype) return 1;
-
+                    if (messagetopic > o.messagetopic && messagetype == o.messagetype) return 1;                                      
                 }
                 else
                 {
                     if (typ == "A" && o.typ == "B") return -1;
                     if (typ == "B" && o.typ == "A") return 1;
                     if (typ == "B" && o.typ == "B") return 0;
-                }   
-            }
+                }
             return -1;
         }
 
@@ -65,20 +60,28 @@ namespace Inheritance.DataStructure
         {
             if (obj == null) return false;
             Category p = obj as Category;
-            if (p == null) return false;
             if (typ == p.typ && messagetype == p.messagetype && messagetopic == p.messagetopic) return true;
             return false;            
+        }
+
+        public override int GetHashCode()
+        {
+            int t;
+            if (typ == "A")
+            {
+                t = 1;
+            }
+            else
+            {
+                t = 2;
+            }
+            return t + messagetopic + messagetype;
         }
 
         public override string ToString()            
         {
             return $"{typ}.{messageType}.{messageTopic}" ;
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        }       
 
         public static bool operator <=(Category obj1, Category obj2)
         {
@@ -135,7 +138,7 @@ namespace Inheritance.DataStructure
         }
         public static bool operator <(Category obj1, Category obj2)
         {
-            if (obj1.typ == "A" && obj2.typ == "A" && obj1.messagetopic < obj2.messagetopic &&
+            if (obj1.typ == "A" && obj2.typ == "A" && obj1.messagetopic < obj2.messagetopic && 
                 obj1.messagetype < obj2.messagetype) return true;
             if (obj1.typ == "A" && obj2.typ == "A" && obj1.messagetopic < obj2.messagetopic &&
                 obj1.messagetype > obj2.messagetype) return false;
