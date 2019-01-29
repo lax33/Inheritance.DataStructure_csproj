@@ -26,8 +26,9 @@ namespace Inheritance.DataStructure
 
         public int CompareTo(object obj)
         {
-            var o =(Category)obj;
-            if (o != null)
+            if (obj == null) return -1;
+            var o =obj as Category;
+            if (o == null) return -1;
             {
                 if (typ == "A" && o.typ == "A")
                 {
@@ -62,7 +63,9 @@ namespace Inheritance.DataStructure
 
         public override bool Equals(object obj)
         {
-            Category p = (Category)obj;
+            if (obj == null) return false;
+            Category p = obj as Category;
+            if (p == null) return false;
             if (typ == p.typ && messagetype == p.messagetype && messagetopic == p.messagetopic) return true;
             return false;            
         }
